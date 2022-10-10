@@ -7,21 +7,21 @@ public class AgedBrieTests
     [InlineData("Aged Brie", 1, 1, 2)]
     [InlineData("Aged Brie", 10, 1, 2)]
     [InlineData("Aged Brie", 15, 1, 2)]
-    public void Given_Aged_Brie_Increase_Quality_By_One_When_Updating_Once(string item, int sellIn, int quality, int expected)
+    public void Given_Aged_Brie_Increases_Quality_When_Updating_Once(string item, int sellIn, int quality, int expected)
     {
         // Arrange
         Program program = new Program();
 
-        List<Item> agedBrie = new ()
+        List<Item> items = new ()
         {
             new Item{ Name = item, SellIn = sellIn, Quality = quality }
         };
         
         // Act
-        program.UpdateQuality(agedBrie);
+        program.UpdateQuality(items);
 
         // Assert
-        Assert.Equal(expected, agedBrie[0].Quality);
+        Assert.Equal(expected, items[0].Quality);
     }
 
     [Theory]
@@ -29,24 +29,24 @@ public class AgedBrieTests
     [InlineData("Aged Brie", 1, 1, 8)]
     [InlineData("Aged Brie", 10, 1, 5)]
     [InlineData("Aged Brie", 15, 1, 5)]
-    public void Given_Aged_Brie_Increase_Quality_By_Four_When_Updating_Four_Times(string item, int sellIn, int quality, int expected)
+    public void Given_Aged_Brie_Increases_Quality_When_Updating_Four_Times(string item, int sellIn, int quality, int expected)
     {
         // Arrange
         Program program = new Program();
 
-        List<Item> agedBrie = new ()
+        List<Item> items = new ()
         {
             new Item{ Name = item, SellIn = sellIn, Quality = quality }
         };
         
         // Act
-        program.UpdateQuality(agedBrie);
-        program.UpdateQuality(agedBrie);
-        program.UpdateQuality(agedBrie);
-        program.UpdateQuality(agedBrie);
+        program.UpdateQuality(items);
+        program.UpdateQuality(items);
+        program.UpdateQuality(items);
+        program.UpdateQuality(items);
 
         // Assert
-        Assert.Equal(expected, agedBrie[0].Quality);
+        Assert.Equal(expected, items[0].Quality);
     }
 
     [Theory]
@@ -58,15 +58,15 @@ public class AgedBrieTests
         // Arrange
         Program program = new Program();
 
-        List<Item> agedBrie = new ()
+        List<Item> items = new ()
         {
             new Item{ Name = item, SellIn = sellIn, Quality = quality }
         };
         
         // Act
-        program.UpdateQuality(agedBrie);
+        program.UpdateQuality(items);
 
         // Assert
-        Assert.Equal(expected, agedBrie[0].Quality);
+        Assert.Equal(expected, items[0].Quality);
     }
 }
