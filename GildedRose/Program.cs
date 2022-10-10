@@ -5,11 +5,11 @@ namespace GildedRose
 {
     public class Program
     {
+        public static Program app = new Program();
+
         public static void Main(string[] args)
         {
             System.Console.WriteLine("OMGHAI!");
-
-            var app = new Program();
 
             List<Item> items = new ()
             {
@@ -24,20 +24,7 @@ namespace GildedRose
                 new Item { Name = "Conjured Mana Cake", SellIn = 3, Quality = 6 }
             };
 
-            for (var i = 0; i < 31; i++)
-            {
-                Console.WriteLine("-------- day " + i + " --------");
-                Console.WriteLine("name, sellIn, quality");
-
-                for (var j = 0; j < items.Count; j++)
-                {
-                    Console.WriteLine(items[j].Name + ", " + items[j].SellIn + ", " + items[j].Quality);
-                }
-
-                Console.WriteLine("");
-
-                app.UpdateQuality(items);
-            }
+            app.PrintStatus(items);
         }
 
         public void UpdateQuality(IList<Item> items)
@@ -121,6 +108,24 @@ namespace GildedRose
 
                         break;
                 }
+            }
+        }
+
+        public void PrintStatus(IList<Item> items)
+        {
+            for (var i = 0; i < 31; i++)
+            {
+                Console.WriteLine("-------- day " + i + " --------");
+                Console.WriteLine("name, sellIn, quality");
+
+                for (var j = 0; j < items.Count; j++)
+                {
+                    Console.WriteLine(items[j].Name + ", " + items[j].SellIn + ", " + items[j].Quality);
+                }
+
+                Console.WriteLine("");
+
+                app.UpdateQuality(items);
             }
         }
     }
