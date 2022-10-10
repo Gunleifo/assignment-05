@@ -2,36 +2,27 @@ namespace GildedRose.Tests;
 
 public class ProgramTests
 {
-    //Program program = new Program();
-
-    /*[Fact]
-    public void TestTheTruth()
-    {
-        true.Should().BeTrue();
-    }
-
-
-
-    [Fact]
-    public void Given_()
+    [Theory]
+    [InlineData("Sulfuras, Hand of Ragnaros", -45, 1, 1)]
+    [InlineData("Sulfuras, Hand of Ragnaros", -5, 5, 5)]
+    [InlineData("Sulfuras, Hand of Ragnaros", 0, 10, 10)]
+    [InlineData("Sulfuras, Hand of Ragnaros", 1, 20, 20)]
+    [InlineData("Sulfuras, Hand of Ragnaros", 10, 25, 25)]
+    [InlineData("Sulfuras, Hand of Ragnaros", 15, 40, 40)]
+    public void Given_Sulfuras_Quality_Never_Changes_When_Updating(string item, int sellIn, int quality, int expected)
     {
         // Arrange
-        List<Item> Items = new()
-        {
-            new Item { Name = "+5 Dexterity Vest", SellIn = 10, Quality = 20 },
-            new Item { Name = "Aged Brie", SellIn = 2, Quality = 0 },
-            new Item { Name = "Elixir of the Mongoose", SellIn = 5, Quality = 7 },
-            new Item { Name = "Sulfuras, Hand of Ragnaros", SellIn = 0, Quality = 80 },
-            new Item { Name = "Sulfuras, Hand of Ragnaros", SellIn = -1, Quality = 80 },
-            new Item { Name = "Backstage passes to a TAFKAL80ETC concert", SellIn = 15, Quality = 20 },
-            new Item { Name = "Backstage passes to a TAFKAL80ETC concert", SellIn = 10, Quality = 49 },
-            new Item { Name = "Backstage passes to a TAFKAL80ETC concert", SellIn = 5, Quality = 49 },
-        };
+        Program program = new Program();
 
+        List<Item> items = new ()
+        {
+            new Item{ Name = item, SellIn = sellIn, Quality = quality }
+        };
         
         // Act
-
+        program.UpdateQuality(items);
 
         // Assert
-    }*/
+        Assert.Equal(expected, items[0].Quality);
+    }
 }
