@@ -91,6 +91,21 @@ namespace GildedRose
                     case "Sulfuras, Hand of Ragnaros":
                         break;
 
+                    case string s when s.StartsWith("Conjured"):
+                        
+                        if (item.Quality >= 2)
+                        {
+                            item.Quality-=2;
+                        }
+                        else if (item.Quality > 0)
+                        {
+                            item.Quality--;
+                        }
+
+                        item.SellIn--;
+
+                        break;
+
                     default:
                         if (item.Quality > 0)
                         {
